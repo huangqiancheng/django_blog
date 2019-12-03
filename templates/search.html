@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+            <!-- Blog -->
+            <div class="lonon-blog">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12"> <span class="heading-meta style-1">Read</span>
+                            <h2 class="lonon-heading animate-box" data-animate-effect="fadeInLeft">博客</h2> </div>
+                    </div>
+                    <form action="/search" method="get">
+                        <input type="text" name="q" placeholder="输入搜索内容">
+                        <input type="submit" value="搜索">
+                    </form>
+                    <h3>你当前搜索的是内容是{{ request.GET.q }}</h3>
+                    <div class="row">
+                        {% for article in contacts  %}
+                        <div class="col-md-6 col-sm-6">
+                            <div class="blog-entry animate-box" data-animate-effect="fadeInLeft">
+                                <a href="{{ article.get_absolute_url }}" class="blog-img"><img src="{{ article.img.url }}" class="img-fluid" alt=""></a>
+                                <div class="desc"> <span>{{ article.created }}</span>
+                                    <h3><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h3>
+                                    <p>{{ article.text }}</p>
+                                </div>
+                            </div>
+                        </div>
+                            {% empty %}
+                                <h3>还没有内容！</h3>
+                        {% endfor %}
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <!-- Pagination -->
+                            <ul class="lonon-pagination-wrap align-center">
+                                {% if contacts.has_previous %}
+
+                                    <li><a href="?q={{ request.GET.q }}page={{ contacts.previous_page_number  }}"><i class="ti-arrow-left"></i></a></li>
+                                {% endif %}
+                            {% for i in contacts.paginator.page_range  %}
+                                <li><a href="?q={{ request.GET.q }}&page={{ i }}" {% if contacts.number == i %}class="active"{% endif %}>{{ i }}</a></li>
+                            {% endfor %}
+
+
+                            {% if contacts.has_next %}
+                              <li><a href="?q={{ request.GET.q }}page={{ contacts.next_page_number }}"><i class="ti-arrow-right"></i></a></li>
+                            {% endif %}
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+{% endblock %}

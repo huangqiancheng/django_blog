@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+        <!-- Main Section -->
+
+            <div class="lonon-projects">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12"> <span class="heading-meta style-1">Portfolio</span>
+                            <h2 class="lonon-heading animate-box" data-animate-effect="fadeInLeft">项目明细</h2> </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7 image-content animate-box fadeInLeft animated" data-animate-effect="fadeInLeft"> <img class="img-fluid mb-30" src="{{ detail_list.img.url }}" alt=""> <img class="img-fluid mb-30" src="{{ detail_list.img.url }}" alt=""> </div>
+                        <div class="col-md-5 sticky-parent animate-box fadeInLeft animated" data-animate-effect="fadeInLeft">
+                            <div id="sticky_item">
+                                <div class="project-desc">
+                                    <h2>Drana Facy</h2>
+                                    <p>Yuroin non lorem ac erat suscipit bibendum. Nulla facilisi. Sedeuter nunc volutpat, mollis sapien vel, conseyer turpeutionyer massa in libero semper. Fusce mollis augue sit amet hendrerit vestibulum. Duisteyerionyer venenatis lacus.</p>
+                                    <p>Fusce mollis augue sit amet hendrerit vestibulum. Duisteyerionyer venenatis lacus.</p>
+                                    <p>Yuroin non lorem ac erat suscipit bibendum. Nulla facilisi. Sedeuter nunc volutpat, mollis sapien veli, conseyer turpeutionyer massa in libero semper. </p>
+                                    <p>Yuroin non lorem ac erat suscipit bibendum. Nulla facilisi. Sedeuter nunc volutpat, mollis sapien vel, conseyer turponyer massa in libero semper. Fusce mollis augue sit amet hendrerit vestibulum.</p>
+                                    <p><b>项目名称:</b> {{ detail_list.name }}
+                                        <br><b>客户:</b> {{ detail_list.cleent }}
+                                        <br><b>技能:</b> {{ detail_list.tags }}
+                                        <br><b>类别:</b> Brand Design </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+{% endblock %}

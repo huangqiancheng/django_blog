@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{#{% block map %}#}
+{#{% load static %}#}
+{#<script type="text/javascript">#}
+{#    function sub() {#}
+{#        $.ajax({#}
+{#            type:'POST',#}
+{#            dataType:'',#}
+{#            url:'/',#}
+{#            data:$('#form_sub').serialize(),#}
+{#            async:true,#}
+{#            #}
+{#        })#}
+{#    }#}
+{#</script>#}
+{#{% endblock %}#}
+{% block content %}
+{% load static %}
+            <div class="lonon-projects">
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12"> <span class="heading-meta style-1">博客</span>
+                            <h2 class="lonon-post-heading animate-box" data-animate-effect="fadeInLeft">{{ detail_list.title }}</h2> </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 image-content animate-box fadeInLeft animated" data-animate-effect="fadeInLeft"> <img src="{{ detail_list.img.url }}" class="img-fluid mb-30" alt=""> </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 animate-box fadeInLeft animated" data-animate-effect="fadeInLeft">
+                            <p>{{ detail_list.tags }}</p>
+                            <p>{{ detail_list.text }}</p>
+                        </div>
+
+                    </div>
+
+
+                     <div class="row">
+                        <div class="col-md-12 col-sm-12 animate-box" data-animate-effect="fadeInLeft">
+                            <!-- Comments -->
+                            <div class="clear" id="comment-list">
+                                <div class="comments-area" id="comments">
+                                    <h2 class="comments-title">{{ comments.count }}条留言</h2>
+                                    <ol class="comment-list">
+                                        {% for i in comments  %}
+                                            <li class="comment">
+                                            <div class="comment-body">
+                                                <div class="comment-author vcard">
+                                                    <h3 class="name">{{ i.name }}</h3> </div>
+                                                <div class="comment-meta">{{ i.created }}</div>
+                                                <p>{{ i.text}}</p>
+                                                <div class="reply"> <a href="#" class="comment-reply-link"><i class="ti-back-left"></i> Replay</a> </div>
+                                            </div>
+                                            <!-- sub comment block -->
+                                        </li>
+                                        {% endfor %}
+
+
+
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-md-8 animate-box" data-animate-effect="fadeInLeft">
+                            <!-- Leave a comments -->
+                            <h3 class="lonon-about-heading">留言</h3>
+                            <form action="" method="post" id="form_sub">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+
+
+                                <input type="submit" value="留言" onclick="sub()">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+{% endblock %}

@@ -1,0 +1,125 @@
+﻿{% extends "base.html" %}
+{% block content %}
+{% load static %}
+            <!-- About Us -->
+            <div class="lonon-about">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12"> <span class="heading-meta style-1">简历</span>
+                            <h2 class="lonon-heading animate-box" data-animate-effect="fadeInLeft">关于我</h2> </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5"> <img src="{{ resume_user.img_head.url }}" class="img-fluid mb-15 animate-box fadeInLeft animated" data-animate-effect="fadeInLeft" alt=""> </div>
+                        <div class="col-md-7 animate-box fadeInLeft animated" data-animate-effect="fadeInLeft"> <span class="heading-meta style-1">Resume</span>
+                            <h3 class="lonon-about-heading">I'am Web Designer</h3>
+                            <p>Quisque convallis lacinia est et volutpat. Ut interdum lectus velit, ac venenatis odio fringilla ut. Mauris tincidunt diam a nisi mollis rhoncus. Nam non ante consequatir, malesuada dui euismod, pharetra mi.</p>
+                            <p>Aenean convallis urna sapien, ut porta tortor maximus ac. Sed auctor, dui sed bib endum feugiat, felis lorem pulvinar mauris.</p>
+                            <p>Drana convallis lacinia est et volutpat. Ut interdum lectus velit, ac venenatis odio fringilla ut. Mauris tincidunt diam a nisi mollis rhoncus.</p>
+                            <div class="lonon-about-contact-wrap">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p><b>生日:</b>{{ resume_user.birth }}</p>
+                                        <p><b>网站:</b>{{ resume_user.sites }}</p>
+                                        <p><b>电话:</b>{{ resume_user.phone }}</p>
+                                        <p><b>Skype:</b> lonon</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><b>学位:</b> {{ resume_user.degree }}</p>
+                                        <p><b>邮箱:</b>{{ resume_user.email }}</p>
+                                        <p><b>Freelance:</b> Available</p>
+                                        <p><b>Linkedin:</b> lonon</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="divider1"></div>
+            <!-- Timeline Experience -->
+            <div class="lonon-timeline">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12"> <span class="heading-meta style-1">简历</span>
+                            <h2 class="lonon-heading animate-box" data-animate-effect="fadeInLeft">工作经验</h2> </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
+                            <div class="timeline lonon-timeline-second-style clearfix">
+{#                                循环打印#}
+                                {% for i in WorkExperience_list %}
+                                <div class="lonon-timeline-item clearfix">
+                                    <div class="left-part">
+                                        <h5 class="item-period">{{ i.started }}</h5> <span class="item-company">{{ i.company }}</span> </div>
+                                    <div class="divider"></div>
+                                    <div class="right-part">
+                                        <h4 class="item-title">{{ i.title }}</h4>
+                                        <p>{{ i.description }}</p>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="divider1"></div>
+            <!-- Timeline Education -->
+            <div class="lonon-timeline">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12"> <span class="heading-meta style-1">简历</span>
+                            <h2 class="lonon-heading animate-box" data-animate-effect="fadeInLeft">教育</h2> </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
+                            <div class="timeline lonon-timeline-second-style clearfix">
+                                {% for i in EducationExperience_list  %}
+                                    <div class="lonon-timeline-item clearfix">
+                                    <div class="left-part">
+                                        <h5 class="item-period">{{ i.started }}</h5> <span class="item-company">{{ i.college }}</span> </div>
+                                    <div class="divider"></div>
+                                    <div class="right-part">
+                                        <h4 class="item-title">{{ i.major }}</h4>
+                                        <p>{{ i.madescriptionjor }}</p>
+                                    </div>
+                                </div>
+                                {% endfor %}
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="divider1"></div>
+            <!-- Skills -->
+            <div class="lonon-skills">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12"> <span class="heading-meta style-1">能力</span>
+                            <h2 class="lonon-heading animate-box" data-animate-effect="fadeInLeft">我的技能</h2> </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5 animate-box" data-animate-effect="fadeInLeft">
+                            <p>Skills convallis lacinia est et volutpat. Ut interdum lecis velit, ac venenatis odio fringilla ut. Mauris tincidunt diame nisi mollis rhoncus. Nam non ante consequatir, malesuada dui euismod, pharetra mi.</p>
+                            <p>Sed auctor, dui sed bibendum feugiat, felis lorem pulvinar mauris vel porttitor risu nunc et risus. Aenean vehicula dictum magna non venenatis.</p>
+                        </div>
+                        <div class="col-md-7 animate-box" data-animate-effect="fadeInLeft">
+                            {% for i in skill_LIst %}
+                               
+
+                               <p class="bar-title">{{ i.program }}<span class="percent align-right">{{ i.level }}%</span></p>
+                            <div class="bar">
+                                <div class="bar-fill bar-fill-developer start" style="width: {{ i.level }}%"></div>
+                            </div>
+                            {% endfor %}
+ 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+{% endblock %}
